@@ -1,4 +1,4 @@
-aababb
+bbc
 a;b;c;
 0
 0;
