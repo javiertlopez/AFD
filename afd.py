@@ -45,15 +45,17 @@ def is_valid(path):
 
         matrix.append(func) 
 
-    actual = inicio
-    estado = actual
-    for char in cadena:
-        actual = matrix[actual][alfabeto.index(char)]
-        estado = str(estado) + '/' + str(actual)
+    subcadenas = [cadena[i: j] for i in range(len(cadena)) 
+          for j in range(i + 1, len(cadena) + 1)]
 
-    if actual in finales:
-        print("ACEPTADO")
-    else:
-        print("RECHAZADO")
+    resultado = []
+    for item in subcadenas:
+        actual = inicio
+        for char in item:
+            actual = matrix[actual][alfabeto.index(char)]
 
-    print(estado)
+        if actual in finales:
+            resultado.append(item)
+
+    resultado = list(dict.fromkeys(resultado))
+    print(resultado)
